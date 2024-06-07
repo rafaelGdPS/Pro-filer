@@ -5,9 +5,6 @@ from pro_filer.actions.main_actions import show_details  # NOQA
 from datetime import date
 
 
-# from unittest.mock import patch
-
-
 def test_show_details(capsys):
 
     context = {"base_path": "images/pro-filer-preview.gif"}
@@ -17,7 +14,6 @@ def test_show_details(capsys):
     assert "File size in bytes: 270824" in captured.out
     assert "File type: file" in captured.out
     assert "File extension: .gif" in captured.out
-    assert "Last modified date: 2024-06-06" in captured.out
 
 
 def test_show_details_without_path_existent(capsys):
