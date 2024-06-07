@@ -1,3 +1,4 @@
+import os
 from pro_filer.actions.main_actions import show_details  # NOQA
 
 
@@ -38,7 +39,7 @@ def test_show_details_without_extension(capsys):
 
 def test_show_details_date_format_is_wrong(capsys):
     context = {"base_path": "images/pro-filer-preview.gif"}
-
+    last_modify = date.fromtimestamp(os.path.getmtime(context["base_path"]))
     show_details(context)
     captured = capsys.readouterr()
-    assert f"Last modified date: {date.today()}\n" in captured.out
+    assert f"Last modified date: {last_modify}\n" in captured.out
